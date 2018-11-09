@@ -1,0 +1,57 @@
+class Dna(str):
+    DNAdict = {'A':'T', 'T':'A', 'G':'C', 'C':'G', 'R':'Y', 'Y':'R', 'M':'K', 'K':'M', 'S':'S', 'W':'W', 'H':'D', 'D':'H', 'B':'V', 'V':'B', 'N':'N'}
+    def __init__(self, DNA):
+        DNA = DNA.upper()
+        for i in DNA:
+            if i in DNAdict:
+                pass
+            else:
+                raise ValueError ('DNA code contains these symbols only: A, T, G, C, R, Y, M, K, S, W, H, D, B, V, N')
+    def gc(DNA):
+        gccounter = 0
+        DNAlen = len(DNA)
+        DNA = DNA.upper()
+        for i in DNA:
+            if str(i) in ['G', 'C', 'S']:
+                gccounter += 1
+            elif str(i) in ['R', 'Y', 'M', 'K', 'H', 'D', 'B', 'V', 'N']:
+                DNAlen = DNAlen - 1
+        return (gccounter / DNAlen)
+    def reverse_complement(DNA):
+        DNA = DNA.upper()
+        Complement_list = []
+        for i in DNA:
+            Complement_list.append(DNAdict[i])
+        Complement_list.reverse()
+        return (''.join(Complement_list))
+    def transcribe (DNA):
+        DNA = DNA.upper()
+        RNA = Rna(DNA.replace('T', 'U'))
+        return (RNA)
+
+class Rna(str):
+    RNAdict = {'A':'U', 'U':'A', 'G':'C', 'C':'G', 'R':'Y', 'Y':'R', 'M':'K', 'K':'M', 'S':'S', 'W':'W', 'H':'D', 'D':'H', 'B':'V', 'V':'B', 'N':'N'}    
+    def __init__(self, RNA):
+        RNA = RNA.upper()
+        for i in RNA:
+            if str(i) in RNAdict:
+                pass
+            else:
+                raise ValueError ('RNA code contains these symbols only: A, U, G, C, R, Y, M, K, S, W, H, D, B, V, N')
+    def gc(RNA):
+        gccounter = 0
+        RNAlen = len(RNA)
+        RNA = RNA.upper()
+        for i in RNA:
+            if str(i) in ['G', 'C', 'S']:
+                gccounter += 1
+            elif str(i) in ['R', 'Y', 'M', 'K', 'H', 'D', 'B', 'V', 'N']:
+                RNAlen = RNAlen - 1
+        return (gccounter/RNAlen)
+    def reverse_complement(RNA):
+        RNA = RNA.upper()
+        Complement_list = []
+        for i in RNA:
+            Complement_list.append(RNAdict[i])
+        Complement_list.reverse()
+        return (''.join(Complement_list))
