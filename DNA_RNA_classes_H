@@ -1,55 +1,60 @@
 class Dna(str):
-    DNAdict = {'A':'T', 'T':'A', 'G':'C', 'C':'G', 'R':'Y', 'Y':'R', 'M':'K', 'K':'M', 'S':'S', 'W':'W', 'H':'D', 'D':'H', 'B':'V', 'V':'B', 'N':'N'}
     def __init__(self, DNA):
+        self.DNAdict = {'A':'T', 'T':'A', 'G':'C', 'C':'G', 'R':'Y', 'Y':'R', 'M':'K', 'K':'M', 'S':'S', 'W':'W', 'H':'D', 'D':'H', 'B':'V', 'V':'B', 'N':'N'}
         DNA = DNA.upper()
         for i in DNA:
-            if i in DNAdict:
+            if i in self.DNAdict:
                 pass
             else:
                 raise ValueError ('DNA code contains these symbols only: A, T, G, C, R, Y, M, K, S, W, H, D, B, V, N')
-    def gc(DNA):
+    
+    def gc(self):
         gccounter = 0
-        DNAlen = len(DNA)
-        DNA = DNA.upper()
+        DNAlen = len(self)
+        DNA = self.upper()
         for i in DNA:
             if str(i) in ['G', 'C', 'S']:
                 gccounter += 1
             elif str(i) in ['R', 'Y', 'M', 'K', 'H', 'D', 'B', 'V', 'N']:
                 DNAlen = DNAlen - 1
         return (gccounter / DNAlen)
-    def reverse_complement(DNA):
-        DNA = DNA.upper()
+    
+    def reverse_complement(self):
+        DNA = self.upper()
         Complement_list = []
         for i in DNA:
-            Complement_list.append(DNAdict[i])
+            Complement_list.append(self.DNAdict[i])
         Complement_list.reverse()
         return (''.join(Complement_list))
-    def transcribe (DNA):
-        DNA = DNA.upper()
+    
+    def transcribe (self):
+        DNA = self.upper()
         RNA = Rna(DNA.replace('T', 'U'))
         return (RNA)
-
+        
 class Rna(str):
-    RNAdict = {'A':'U', 'U':'A', 'G':'C', 'C':'G', 'R':'Y', 'Y':'R', 'M':'K', 'K':'M', 'S':'S', 'W':'W', 'H':'D', 'D':'H', 'B':'V', 'V':'B', 'N':'N'}    
     def __init__(self, RNA):
-        RNA = RNA.upper()
+        self.RNAdict = {'A':'U', 'U':'A', 'G':'C', 'C':'G', 'R':'Y', 'Y':'R', 'M':'K', 'K':'M', 'S':'S', 'W':'W', 'H':'D', 'D':'H', 'B':'V', 'V':'B', 'N':'N'}    
+        RNA = self.upper()
         for i in RNA:
-            if str(i) in RNAdict:
+            if str(i) in self.RNAdict:
                 pass
             else:
                 raise ValueError ('RNA code contains these symbols only: A, U, G, C, R, Y, M, K, S, W, H, D, B, V, N')
-    def gc(RNA):
+    
+    def gc(self):
         gccounter = 0
-        RNAlen = len(RNA)
-        RNA = RNA.upper()
+        RNAlen = len(self)
+        RNA = self.upper()
         for i in RNA:
             if str(i) in ['G', 'C', 'S']:
                 gccounter += 1
             elif str(i) in ['R', 'Y', 'M', 'K', 'H', 'D', 'B', 'V', 'N']:
                 RNAlen = RNAlen - 1
         return (gccounter/RNAlen)
-    def reverse_complement(RNA):
-        RNA = RNA.upper()
+    
+    def reverse_complement(self):
+        RNA = self.upper()
         Complement_list = []
         for i in RNA:
             Complement_list.append(RNAdict[i])
