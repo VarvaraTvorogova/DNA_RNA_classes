@@ -12,9 +12,9 @@ class Dna(str):
         DNAlen = len(self)
         DNA = self.upper()
         for i in DNA:
-            if str(i) in ['G', 'C', 'S']:
+            if i in ['G', 'C', 'S']:
                 gccounter += 1
-            elif str(i) in ['R', 'Y', 'M', 'K', 'H', 'D', 'B', 'V', 'N']:
+            elif i in ['R', 'Y', 'M', 'K', 'H', 'D', 'B', 'V', 'N']:
                 DNAlen = DNAlen - 1
         try:    
             return (gccounter / DNAlen)
@@ -40,7 +40,7 @@ class Rna(str):
     def __init__(self, RNA):
         RNA = self.upper()
         for i in RNA:
-            if str(i) not in Rna.RNAdict:
+            if i not in Rna.RNAdict:
                 raise ValueError ('Your string contains non-RNA symbols. Permitted symbols are: A, U, G, C, R, Y, M, K, S, W, H, D, B, V, N')
     
     def gc(self):
@@ -48,9 +48,9 @@ class Rna(str):
         RNAlen = len(self)
         RNA = self.upper()
         for i in RNA:
-            if str(i) in ['G', 'C', 'S']:
+            if i in ['G', 'C', 'S']:
                 gccounter += 1
-            elif str(i) in ['R', 'Y', 'M', 'K', 'H', 'D', 'B', 'V', 'N']:
+            elif i in ['R', 'Y', 'M', 'K', 'H', 'D', 'B', 'V', 'N']:
                 RNAlen = RNAlen - 1
         try:    
             return (gccounter / RNAlen)
