@@ -1,62 +1,62 @@
 class Dna(str):
-    DNAdict = {'A': 'T', 'T': 'A', 'G': 'C', 'C': 'G', 'R': 'Y', 'Y': 'R', 'M': 'K', 'K': 'M', 'S': 'S', 'W': 'W', 'H': 'D', 'D': 'H', 'B': 'V', 'V': 'B', 'N': 'N'}
+    dna_dict = {'A': 'T', 'T': 'A', 'G': 'C', 'C': 'G', 'R': 'Y', 'Y': 'R', 'M': 'K', 'K': 'M', 'S': 'S', 'W': 'W', 'H': 'D', 'D': 'H', 'B': 'V', 'V': 'B', 'N': 'N'}
 
-    def __init__(self, DNA):
-        self.DNA = DNA.upper()
-        for i in self.DNA:
-            if i not in Dna.DNAdict:
+    def __init__(self, dna):
+        self.dna = dna.upper()
+        for i in self.dna:
+            if i not in Dna.dna_dict:
                 raise ValueError('Your string contains non-DNA symbols. Permitted symbols are: A, T, G, C, R, Y, M, K, S, W, H, D, B, V, N')
 
     def gc(self):
-        gccounter = 0
-        DNAlen = len(self)
-        for i in self.DNA:
+        gc_counter = 0
+        dna_len = len(self)
+        for i in self.dna:
             if i in ['G', 'C', 'S']:
-                gccounter += 1
+                gc_counter += 1
             elif i in ['R', 'Y', 'M', 'K', 'H', 'D', 'B', 'V', 'N']:
-                DNAlen = DNAlen - 1
+                dna_len = dna_len - 1
         try:
-            return round(gccounter / DNAlen, 2)
-        except ZeroDivisionError:
-            return None 
-
-    def reverse_complement(self):
-        Complement_list = []
-        for i in self.DNA:
-            Complement_list.append(Dna.DNAdict[i])
-        Complement_list.reverse()
-        return Dna(''.join(Complement_list))
-
-    def transcribe(self):
-        RNA = Rna(self.DNA.replace('T', 'U'))
-        return RNA
-
-
-class Rna(str):
-    RNAdict = {'A': 'U', 'U': 'A', 'G': 'C', 'C': 'G', 'R': 'Y', 'Y': 'R', 'M': 'K', 'K': 'M', 'S': 'S', 'W': 'W', 'H': 'D', 'D': 'H', 'B': 'V', 'V': 'B', 'N': 'N'}
-
-    def __init__(self, RNA):
-        self.RNA = RNA.upper()
-        for i in self.RNA:
-            if i not in Rna.RNAdict:
-                raise ValueError('Your string contains non-RNA symbols. Permitted symbols are: A, U, G, C, R, Y, M, K, S, W, H, D, B, V, N')
-
-    def gc(self):
-        gccounter = 0
-        RNAlen = len(self)
-        for i in self.RNA:
-            if i in ['G', 'C', 'S']:
-                gccounter += 1
-            elif i in ['R', 'Y', 'M', 'K', 'H', 'D', 'B', 'V', 'N']:
-                RNAlen = RNAlen - 1
-        try:
-            return round (gccounter / RNAlen, 2)
+            return round(gc_counter / dna_len, 2)
         except ZeroDivisionError:
             return None
 
     def reverse_complement(self):
-        Complement_list = []
-        for i in self.RNA:
-            Complement_list.append(Rna.RNAdict[i])
-        Complement_list.reverse()
-        return Rna(''.join(Complement_list))
+        complement_list = []
+        for i in self.dna:
+            complement_list.append(Dna.dna_dict[i])
+        complement_list.reverse()
+        return Dna(''.join(complement_list))
+
+    def transcribe(self):
+        rna = Rna(self.dna.replace('T', 'U'))
+        return rna
+
+
+class Rna(str):
+    rna_dict = {'A': 'U', 'U': 'A', 'G': 'C', 'C': 'G', 'R': 'Y', 'Y': 'R', 'M': 'K', 'K': 'M', 'S': 'S', 'W': 'W', 'H': 'D', 'D': 'H', 'B': 'V', 'V': 'B', 'N': 'N'}
+
+    def __init__(self, rna):
+        self.rna = rna.upper()
+        for i in self.rna:
+            if i not in Rna.rna_dict:
+                raise ValueError('Your string contains non-RNA symbols. Permitted symbols are: A, U, G, C, R, Y, M, K, S, W, H, D, B, V, N')
+
+    def gc(self):
+        gc_counter = 0
+        rna_len = len(self)
+        for i in self.rna:
+            if i in ['G', 'C', 'S']:
+                gc_counter += 1
+            elif i in ['R', 'Y', 'M', 'K', 'H', 'D', 'B', 'V', 'N']:
+                rna_len = rna_len - 1
+        try:
+            return round(gc_counter / rna_len, 2)
+        except ZeroDivisionError:
+            return None
+
+    def reverse_complement(self):
+        complement_list = []
+        for i in self.rna:
+            Complement_list.append(Rna.rna_dict[i])
+        complement_list.reverse()
+        return Rna(''.join(complement_list))
