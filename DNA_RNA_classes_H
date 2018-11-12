@@ -16,20 +16,20 @@ class Dna(str):
             elif i in ['R', 'Y', 'M', 'K', 'H', 'D', 'B', 'V', 'N']:
                 DNAlen = DNAlen - 1
         try:
-            return(round(gccounter / DNAlen, 2))
+            return round(gccounter / DNAlen, 2)
         except ZeroDivisionError:
-            return(None)
+            return None 
 
     def reverse_complement(self):
         Complement_list = []
         for i in self.DNA:
             Complement_list.append(Dna.DNAdict[i])
         Complement_list.reverse()
-        return(Dna(''.join(Complement_list)))
+        return Dna(''.join(Complement_list))
 
     def transcribe(self):
         RNA = Rna(self.DNA.replace('T', 'U'))
-        return(RNA)
+        return RNA
 
 
 class Rna(str):
@@ -50,14 +50,13 @@ class Rna(str):
             elif i in ['R', 'Y', 'M', 'K', 'H', 'D', 'B', 'V', 'N']:
                 RNAlen = RNAlen - 1
         try:
-            return (round (gccounter / RNAlen, 2))
+            return round (gccounter / RNAlen, 2)
         except ZeroDivisionError:
-            return (None)
+            return None
 
     def reverse_complement(self):
         Complement_list = []
         for i in self.RNA:
             Complement_list.append(Rna.RNAdict[i])
         Complement_list.reverse()
-        return (Rna(''.join(Complement_list)))
-
+        return Rna(''.join(Complement_list))
