@@ -57,6 +57,6 @@ class Rna(str):
     def reverse_complement(self):
         complement_list = []
         for i in self.rna:
-            Complement_list.append(Rna.rna_dict[i])
+            complement_list.append(Rna.rna_dict[i])
         complement_list.reverse()
         return Rna(''.join(complement_list))
